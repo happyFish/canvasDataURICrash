@@ -1,0 +1,9 @@
+img {
+  display :none;
+}
+
+canvas {
+  display: block;
+  border: 2px solid red;
+  /*-webkit-transform:  translate( -35%, -35% ) scale( .2 );*/
+}

@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>canvas_test</title>
+
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+
+
+        <img  src="images/Sombrero_Galaxy_in_infrared_light_(Hubble_Space_Telescope_and_Spitzer_Space_Telescope).jpg" id="image" />
+
+        <button id="stop">Stop</button>
+
+        <canvas id="canvas" height=824 width=1800></canvas>
+
+        <script>
+
+            var c    = document.getElementById("canvas"),
+                ctx  = c.getContext("2d"),
+
+                img  = document.getElementById("image"),
+
+                size = 1150,
+
+                interval,
+
+                stopButton = document.getElementById( 'stop' );
+
+            interval = window.setInterval( function() {
+
+                canvas.height = size;
+                canvas.width = size;
+
+                ctx.drawImage(img,0,0)
+
+                var dataURI      = c.toDataURL("image/jpeg", 1.0);
+
+                console.log( dataURI);
+
+                var link = document.createElement('a');
+
+                document.body.appendChild( link );
+                link.download = "testtest";
+                link.href     = dataURI;
+
+                link.click();
+
+                size += 1;
+
+
+            }, 2000 );
+
+
+
+            stopButton.onclick = function() {
+                window.clearInterval( interval );
+            }
+
+
+        </script>
+</body>
+</html>
